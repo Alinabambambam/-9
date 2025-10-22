@@ -1,0 +1,58 @@
+ internal class Program
+ {
+     static void Main(string[] args)
+     {
+          BankAccount bankaccouuntObject = new BankAccount("ИВан", 1000);
+         bankaccouuntObject.Deposit(500);
+         bankaccouuntObject.Withdraw(1000);
+
+
+
+     }
+ }
+
+ internal class BankAccount
+ {
+     private string owner;
+     private double balance;
+
+     public string Owner
+     {
+         get { return owner; }
+         set { owner = value; }
+     }
+     public double Balance
+     {
+         get { return balance; }
+         set { if (balance < 0)
+             { balance = 0; }
+             else { balance = value; }
+               }
+     }
+     public BankAccount (string owner, double balance)
+     {
+         Owner = owner;  
+         Balance = balance;
+     }
+     public void Deposit (double sum)
+     {
+         if (sum > 0)
+         {
+             Balance += sum;
+             Console.WriteLine($"{owner}, баланс: {balance}");
+         }
+         else
+         {
+             Console.WriteLine(" ошибка");
+         }
+     }
+     public void Withdraw(double sum)
+     {
+         if (sum >0 || balance <= sum) 
+         {
+             Balance -= sum;
+             Console.WriteLine($"{owner}, баланс: {balance}");
+         }
+         else { Console.WriteLine("ошибка"); }
+     }
+ }
