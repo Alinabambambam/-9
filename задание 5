@@ -1,0 +1,47 @@
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            pet PetObject = new pet("рекс", 80);
+            PetObject.Play();
+            PetObject.Rest();
+
+        }
+    }
+
+ internal class pet
+ {
+     private string name;
+     private int energy;
+
+     public string Name
+     { get { return name; }
+         set { if (string.IsNullOrEmpty(value))
+                 Console.WriteLine("пустота");
+             else { name = value; }
+         }
+     }
+     public int Energy
+     { get { return energy; } set { if (energy < 0 || energy > 100) { Console.WriteLine("ошибка"); }
+             else { energy = value; }
+         }
+     }
+ 
+
+
+     public pet(string name, int energy)
+     { Name = name; Energy = energy; }
+     public void Play()
+     {
+         int play = Energy -= 20;
+         if (play < 0) { Console.WriteLine("ошибка"); }
+         else { Console.WriteLine($"{name} играет, энергия: {energy}"); }
+     }
+     public void Rest()
+     {
+         int rest = Energy += 30;
+         if (rest < 0) { Console.WriteLine("ошибка"); }
+         else { Console.WriteLine($"{name} отдыхает, энергия: {energy}"); }
+     }
+ }
