@@ -1,0 +1,38 @@
+ internal class Program
+ {
+     static void Main(string[] args)
+     {
+         Phone phoneObject = new Phone();
+         phoneObject.BatteryLevel = 80;
+         phoneObject.Brand = "САМСУНГ";
+
+     }
+ }
+
+
+internal class Phone
+{
+    private string brand;
+    private int batteryLevel;
+
+    public int BatteryLevel
+    {
+        get { return batteryLevel; }
+        set
+        {
+            batteryLevel = value >= 0 && value <= 100? value:0;
+            { Console.WriteLine("ошибка"); }
+        }
+    }
+        public string Brand
+    { 
+        get { return brand; }
+        set { brand = value; }
+    }
+    public void UsePhone()
+    {
+        Console.WriteLine($"Телефон {brand}, заряд : {batteryLevel} %");
+    }
+
+
+}
